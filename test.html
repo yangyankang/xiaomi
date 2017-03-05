@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+
+    <ul class="tabs">
+        <li class="active"><a href="#tab1">导航菜单</a></li>
+        <li><a href="#tab4">TAB标签</a></li>
+    </ul>
+    <div class="tab_container">
+        <div id="tab1" class="tab_content" style="display: block; ">
+
+            <h3><a href="http://www.freejs.net/article_daohangcaidan_13.html">jquery css多级下拉菜单</a></h3>
+            <p id="">多级菜单，理论上支持无限多的层级，文件结构非常简单的，具体的请看下面的内容</p>
+        </div>
+
+        <div id="tab4" class="tab_content" style="display: none; ">
+            <h2>各种tab标签选项卡</h2>
+            <h3><a href="http://www.freejs.net/article_tabbiaoqian_17.html">tab标签页面,ajax载入</a></h3>
+
+            <p> tab标签，jquery ajax载入数据库的内容</p>
+        </div>
+    </div>
+
+</div>
+<script src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        //默认active
+        $(".tab_content").hide(); //隐藏全部的tab菜单内容
+        $("ul.tabs li:first").addClass("active").show(); //对第一个li标签添加class="active属性"
+        $(".tab_content:first").show(); //显示第一个tab内容
+
+        //点击事件
+        $("ul.tabs li").click(function() {
+            $("ul.tabs li").removeClass("active"); //移除class="active"属性
+            $(this).addClass("active"); //添加class="active"到选择标签中
+            $(".tab_content").hide(); //隐藏全部标签内容
+            var activeTab = $(this).find("a").attr("href"); //找到所属属性值来识别活跃选项卡和内容
+            $(activeTab).fadeIn(); //使内容消失
+            return false;
+        });
+
+    });
+</script></body>
+</html>
